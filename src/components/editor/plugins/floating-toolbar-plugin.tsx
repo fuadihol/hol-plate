@@ -9,9 +9,10 @@ export const FloatingToolbarPlugin = createPlatePlugin({
   key: 'floating-toolbar',
   render: {
     afterEditable: () => (
-      <FloatingToolbar>
-        <FloatingToolbarButtons />
-      </FloatingToolbar>
+      <></>
+      // <FloatingToolbar>
+      //   <FloatingToolbarButtons />
+      // </FloatingToolbar>
     ),
   },
 });

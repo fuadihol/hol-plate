@@ -169,12 +169,14 @@ export const useCreateEditor = (
     override,
     placeholders,
     readOnly,
+    initialValue,
     ...options
   }: {
     components?: Record<string, any>;
     placeholders?: boolean;
     plugins?: any[];
     readOnly?: boolean;
+    initialValue?: any[];
   } & Omit<CreatePlateEditorOptions, 'plugins'> = {},
   deps: any[] = []
 ) => {
@@ -197,22 +199,7 @@ export const useCreateEditor = (
         FixedToolbarPlugin,
         FloatingToolbarPlugin,
       ],
-      value: [
-        {
-          children: [{ text: 'Playground' }],
-          type: 'h1',
-        },
-        {
-          children: [
-            { text: 'A rich-text editor with AI capabilities. Try the ' },
-            { bold: true, text: 'AI commands' },
-            { text: ' or use ' },
-            { kbd: true, text: 'Cmd+J' },
-            { text: ' to open the AI menu.' },
-          ],
-          type: ParagraphPlugin.key,
-        },
-      ],
+      ...(initialValue ? { value: initialValue } : { skipInitialization: true }),
       ...options,
     },
     deps
